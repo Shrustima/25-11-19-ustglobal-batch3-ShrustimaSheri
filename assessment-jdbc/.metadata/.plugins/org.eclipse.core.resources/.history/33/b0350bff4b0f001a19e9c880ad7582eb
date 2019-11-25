@@ -1,0 +1,5 @@
+package com.ustglobal.phoneapp.dao;
+
+public class PhoneDAO {
+
+}

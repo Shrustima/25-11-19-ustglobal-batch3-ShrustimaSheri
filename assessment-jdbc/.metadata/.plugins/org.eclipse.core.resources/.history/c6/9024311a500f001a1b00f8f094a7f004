@@ -1,0 +1,82 @@
+package com.ustglobal.phoneapp;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.ustglobal.phoneapp.dao.PhoneDAO;
+import com.ustglobal.phoneapp.dto.PhoneDB;
+import com.ustglobal.phoneapp.util.PhoneMain;
+
+public class App {
+
+public static void main(String[] args) {
+		
+		System.out.println("Press 1 to show all contacts");
+		System.out.println("Press 2 to Search for contact(using name)");
+		System.out.println("Press 3 to Operate on contact");
+		
+		Scanner scn = new Scanner(System.in);
+		int ch = scn.nextInt();
+		
+		switch(ch) {
+		
+		case 1: 
+			PhoneDAO dao = PhoneMain.getPhoneDAO();
+			List<PhoneDB> result = dao.getAllPhoneDb();
+			
+			for(PhoneDB db : result) {
+				System.out.println("Name: "+db.getName());
+				//System.out.println("Number: "+db.getNumber());
+				//System.out.println("Groups: "+db.getGroups());
+			}
+			
+			break;
+		
+		case 2:
+			
+		PhoneDAO dao2 = PhoneMain.getPhoneDAO();
+		System.out.println("Enter name ");
+		String nm = scn.next();
+		PhoneDB db2 = dao2.searchPhonedb(nm);
+		if(db2!=null) {
+			System.out.println("Name: "+db2.getName());
+			System.out.println("Number: "+db2.getNumber());
+			
+
+		}else {
+			System.out.println("No data found");
+		}
+			
+		System.out.println("Press 1 to call");
+		System.out.println("Press 2 to message");
+		System.out.println("Press 3 to go back to main menu");
+		
+		
+		
+			Scanner scn1 = new Scanner(System.in);
+			int ch1 = scn1.nextInt();
+		
+			switch(ch1) {
+		
+			case 11: 
+				System.out.println("Calling the contact");			
+				break;
+			case 12 :
+				System.out.println("sending the message");
+				break;
+			case 13 :
+				System.out.println("go back to main menu");
+				break;
+		break;
+		
+		case 3:
+			System.out.println("Press 1 to add contact");
+			System.out.println("Press 2 to delete contact");
+			System.out.println("Press 3 to edit contact");
+			
+			break;
+}
+}
+}
+	
+
